@@ -5,11 +5,16 @@ if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
   add_compile_options(-Wall -Wextra -Wpedantic)
 endif()
 
-# find dependencies
 find_package(ament_cmake REQUIRED)
-# uncomment the following section in order to fill in
-# further dependencies manually.
-# find_package(<dependency> REQUIRED)
+find_package(ignition-cmake2 REQUIRED)
+
+include_directories(include)
+
+ign_find_package( ignition-plugin1 REQUIRED COMPONENTS register )
+ign_find_package( ignition-gazebo6 REQUIRED )
+
+install( DIRECTORY launch DESTINATION share/${PROJECT_NAME} )
+install( DIRECTORY worlds DESTINATION share/${PROJECT_NAME} )
 
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)
