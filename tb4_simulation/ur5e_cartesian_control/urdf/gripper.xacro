@@ -1,0 +1,9 @@
+<robot xmlns:xacro="http://ros.org/wiki/xacro" name="robotiq_85_gripper">
+  <xacro:include filename="$(find ur5e_cartesian_control)/urdf/robotiq_85_gripper.urdf.xacro" />
+  <xacro:macro name="add_gripper" params="parent">
+    <xacro:robotiq_85_gripper prefix="" parent="${parent}">
+      <origin xyz="0 0 0" rpy="0 -1.57 0"/>
+    </xacro:robotiq_85_gripper>
+  </xacro:macro> 
+
+</robot>

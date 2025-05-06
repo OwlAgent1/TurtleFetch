@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="se3_sensor">
+  <!-- <link name="base_link"/> -->
+  <xacro:macro name="se3_sensor" params="name ip_address sensor_id port">
+
+    <ros2_control name="${name}" type="sensor">
+
+      <hardware>
+        <plugin>se3_sensor_driver/Se3SensorDriver</plugin>
+        <param name="ip_address">${ip_address}</param>
+        <param name="sensor_id">${sensor_id}</param>
+        <param name="port">${port}</param>
+
+
+      </hardware>
+
+      <sensor name="${name}">
+        <state_interface name="position.x"/>
+        <state_interface name="position.y"/>
+        <state_interface name="position.z"/>
+        <state_interface name="orientation.x"/>
+        <state_interface name="orientation.y"/>
+        <state_interface name="orientation.z"/>
+        <state_interface name="orientation.w"/>
+        <param name="frame_id">${name}_frame</param>
+      </sensor>
+      
+    </ros2_control>
+  </xacro:macro>
+</robot>
+

@@ -1,0 +1,42 @@
+---
+controller_manager:
+  ros__parameters:
+    update_rate: 100
+    joint_state_broadcaster:
+      type: joint_state_broadcaster/JointStateBroadcaster
+
+    joint_velocities:
+      type: velocity_controllers/JointGroupVelocityController
+
+    robot_broadcaster:
+      type: pose_broadcaster/PoseBroadcaster
+
+    target_broadcaster:
+      type: pose_broadcaster/PoseBroadcaster
+
+joint_velocities:
+  ros__parameters:
+    joints:
+      - shoulder_pan_joint
+      - shoulder_lift_joint
+      - elbow_joint
+      - wrist_1_joint
+      - wrist_2_joint
+      - wrist_3_joint
+
+robot_broadcaster:
+  ros__parameters:
+    pose_name: "robot_sensor"
+    publish_rate: 1.0
+    frame_id: "base_link"
+    tf:
+      enable: true
+
+target_broadcaster:
+  ros__parameters:
+    pose_name: "target_sensor"
+    publish_rate: 1.0
+    frame_id: "base_link"
+    tf:
+      enable: true
+
