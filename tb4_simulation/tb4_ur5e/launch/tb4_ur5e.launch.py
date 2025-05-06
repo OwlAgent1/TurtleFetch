@@ -383,7 +383,19 @@ def generate_launch_description():
         arguments=["joint_velocities", "-c", "/controller_manager"],
         output="screen"
     )
+    robotiq_activation_controller = Node(
+        package="controller_manager",
+        executable="spawner",
+        arguments=["robotiq_activation_controller", "-c", "/controller_manager"],
+        output="screen",
+    )   
 
+    robotiq_gripper_controller = Node(
+        package="controller_manager",
+        executable="spawner",
+        arguments=["robotiq_gripper_controller", "-c", "/controller_manager"],
+        output="screen",
+    )
     cartesian_controller_node = Node(
         package="ros2_controllers_cartesian",
         executable="cartesian_controller_node_exe",
@@ -517,6 +529,8 @@ def generate_launch_description():
     ld.add_action(controller_manager)
     ld.add_action(joint_state_broadcaster)
     ld.add_action(joint_vel_controller)
+    ld.add_action(robotiq_activation_controller)
+    ld.add_action(robotiq_gripper_controller)
     ld.add_action(cartesian_controller_node)
     ld.add_action(tf_tool)
     ld.add_action(tf_sensor_base)

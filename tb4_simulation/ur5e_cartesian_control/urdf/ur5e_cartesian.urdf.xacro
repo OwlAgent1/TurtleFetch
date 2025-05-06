@@ -7,7 +7,7 @@
 
   <xacro:include filename="$(find ur_description)/urdf/ur_macro.xacro" />
   <xacro:include filename="$(find se3_sensor_driver)/urdf/se3_sensor.xacro"/>
-  <!-- <xacro:include filename="$(find ur5e_cartesian_control)/urdf/gripper.xacro" /> -->
+  <xacro:include filename="$(find ur5e_cartesian_control)/urdf/gripper.xacro" />
 
 
   <xacro:arg name="joint_limit_params" default="$(find ur_description)/config/$(arg ur_type)/joint_limits.yaml"/>
@@ -32,7 +32,10 @@
   >
     <origin xyz="0 0 0" rpy="0 0 0" />
   </xacro:ur_robot>
-  <!-- <xacro:add_gripper parent="tool0" /> -->
+  <xacro:add_gripper parent="tool0"
+                   prefix="rq_"
+                   sim_ignition="$(arg sim_ignition)"
+                   use_fake_hardware="$(arg use_fake_hardware)"/>
   <gazebo>
     <plugin filename="libign_ros2_control-system.so" name="ign_ros2_control::IgnitionROS2ControlPlugin">
       <parameters>$(find ur5e_cartesian_control)/config/ur5e_controller.yaml</parameters>

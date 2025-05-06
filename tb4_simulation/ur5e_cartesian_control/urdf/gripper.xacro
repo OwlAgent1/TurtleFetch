@@ -1,9 +1,24 @@
-<robot xmlns:xacro="http://ros.org/wiki/xacro" name="robotiq_85_gripper">
-  <xacro:include filename="$(find ur5e_cartesian_control)/urdf/robotiq_85_gripper.urdf.xacro" />
-  <xacro:macro name="add_gripper" params="parent">
-    <xacro:robotiq_85_gripper prefix="" parent="${parent}">
-      <origin xyz="0 0 0" rpy="0 -1.57 0"/>
-    </xacro:robotiq_85_gripper>
-  </xacro:macro> 
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
 
+  <xacro:include filename="$(find robotiq_description)/urdf/ur_to_robotiq_adapter.urdf.xacro"/>
+  <xacro:include filename="$(find robotiq_description)/urdf/robotiq_2f_85_macro.urdf.xacro"/>
+
+  <xacro:macro name="add_gripper" params="parent:=tool0 prefix:=rq_ sim_ignition:=false use_fake_hardware:=false">
+
+    <xacro:ur_to_robotiq
+        connected_to="${parent}"
+        prefix="${prefix}" />
+
+
+  <xacro:robotiq_gripper
+        name="robotiq_85"
+        parent="${prefix}ur_to_robotiq_link"
+        prefix="${prefix}"
+        sim_ignition="${sim_ignition}"
+        use_fake_hardware="${use_fake_hardware}"
+        include_ros2_control="true">
+  <origin xyz="0 0 0" rpy="0 0 0"/>
+</xacro:robotiq_gripper>
+  </xacro:macro>
 </robot>

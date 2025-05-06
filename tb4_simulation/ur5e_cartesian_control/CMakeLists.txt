@@ -14,6 +14,8 @@ find_package(tf2_ros REQUIRED)
 find_package(controller_manager REQUIRED)
 find_package(se3_sensor_driver REQUIRED)
 find_package(ros2_controllers_cartesian REQUIRED)
+find_package(robotiq_description REQUIRED)
+find_package(gripper_controllers REQUIRED)
 # uncomment the following section in order to fill in
 # further dependencies manually.
 # find_package(<dependency> REQUIRED)
@@ -22,7 +24,7 @@ install(
   DIRECTORY launch config urdf
   DESTINATION share/${PROJECT_NAME}
 )
-
+ament_export_dependencies(robotiq_description gripper_controllers)
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)
   # the following line skips the linter which checks for copyrights

@@ -15,7 +15,8 @@
   <exec_depend>tf2_ros</exec_depend>
   <exec_depend>controller_manager</exec_depend>
   <exec_depend>ros2_control</exec_depend>
-
+  <exec_depend>robotiq_description</exec_depend>
+  <exec_depend>gripper_controllers</exec_depend>
   <exec_depend>se3_sensor_driver</exec_depend>
   <exec_depend>ros2_controllers_cartesian</exec_depend>
 

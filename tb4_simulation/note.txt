@@ -1,0 +1,18 @@
+--send target to ur5e:
+ros2 run tf2_ros static_transform_publisher -0.7 0.3 0.6 0 -3.14 0 sensor_base target
+
+--send command to gripper(open the gripper):
+
+ros2 action send_goal \
+  /robotiq_gripper_controller/gripper_cmd \
+  control_msgs/action/GripperCommand \
+  "{ command: { position: 0.0, max_effort: 40.0 } }"
+  
+--send command to gripper(close the gripper):
+ros2 action send_goal \
+  /robotiq_gripper_controller/gripper_cmd \
+  control_msgs/action/GripperCommand \
+  "{ command: { position: 0.8, max_effort: 40.0 } }"
+  
+--check controllers:
+ros2 control list_controllers
