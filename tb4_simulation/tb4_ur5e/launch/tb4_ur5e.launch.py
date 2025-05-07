@@ -34,7 +34,7 @@ def generate_launch_description():
     DeclareLaunchArgument('nav2', default_value='true',
                           choices=['true', 'false'],
                           description='Whether to launch Nav2'),
-    DeclareLaunchArgument('world', default_value='wyman',
+    DeclareLaunchArgument('world', default_value='wyman_ur5e',
                           description='Ignition World'),
     DeclareLaunchArgument("x_ur", default_value="0.2"),
     DeclareLaunchArgument("y_ur", default_value="0.2"),

@@ -2,25 +2,18 @@
 <sdf version="1.7">
   <world name="default">
 
-<model name='ground_plane'>
+    <model name="ground_plane">
       <static>1</static>
-      <link name='link'>
-        <collision name='collision'>
+      <link name="link">
+        <collision name="collision">
           <geometry>
             <plane>
               <normal>0 0 1</normal>
               <size>100 100</size>
             </plane>
           </geometry>
-          <surface>
-            <friction>
-              <ode/>
-            </friction>
-            <bounce/>
-            <contact/>
-          </surface>
         </collision>
-        	 <visual name='visual'>
+        <visual name="visual">
           <geometry>
             <plane>
               <normal>0 0 1</normal>
@@ -34,26 +27,75 @@
           </material>
         </visual>
       </link>
-      <pose>0 0 0 0 -0 0</pose>
-  </model>
+      <pose>0 0 0 0 0 0</pose>
+    </model>
 
-<light type="directional" name="sun">
-	    <cast_shadows>true</cast_shadows>
-	    <pose>0 0 10 0 0 0</pose>
-	    <diffuse>0.8 0.8 0.8 1</diffuse>
-	    <specular>0.2 0.2 0.2 1</specular>
-	    <attenuation>
-		<range>1000</range>
-		<constant>0.9</constant>
-		<linear>0.01</linear>
-		<quadratic>0.001</quadratic>
-	    </attenuation>
-	    <direction>-0.5 0.1 -0.9</direction>
-	</light>
 
-      <gravity>0 0 0</gravity>
+    <model name="pickup_cube">
+      <static>false</static>
+      <link name="cube_link">
 
-          <physics type='ode'>
+        <inertial>
+          <mass>0.1</mass>
+          <inertia>
+            <ixx>4.17e-5</ixx>
+            <iyy>4.17e-5</iyy>
+            <izz>4.17e-5</izz>
+          </inertia>
+        </inertial>
+
+
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>0.05 0.05 0.05</size>
+            </box>
+          </geometry>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <friction>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+
+
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>0.05 0.05 0.05</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.2 0.4 0.8 1</ambient>
+            <diffuse>0.2 0.4 0.8 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <pose>-0.5 0 0.025 0 0 0</pose>
+    </model>
+
+
+    <light type="directional" name="sun">
+      <cast_shadows>true</cast_shadows>
+      <pose>0 0 10 0 0 0</pose>
+      <diffuse>0.8 0.8 0.8 1</diffuse>
+      <specular>0.2 0.2 0.2 1</specular>
+      <attenuation>
+        <range>1000</range>
+        <constant>0.9</constant>
+        <linear>0.01</linear>
+        <quadratic>0.001</quadratic>
+      </attenuation>
+      <direction>-0.5 0.1 -0.9</direction>
+    </light>
+
+
+    <gravity>0 0 0</gravity>
+
+    <physics type="ode">
       <max_step_size>0.001</max_step_size>
       <real_time_factor>1</real_time_factor>
       <real_time_update_rate>1000</real_time_update_rate>
