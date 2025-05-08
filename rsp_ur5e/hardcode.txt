@@ -1,0 +1,29 @@
+###############  Launch  ###############
+ros2 launch ur5e_cartesian_control ur5e.launch.py use_real:=true use_gripper:=true
+
+###############  UR5e    ###############
+ --target place
+ ros2 run tf2_ros static_transform_publisher -0.34 -0.05 0.18 0 -3.14 0 sensor_base target
+
+ --next position
+ ros2 run tf2_ros static_transform_publisher -0.34 -0.05 0.3 0 -3.14 0 sensor_base target
+
+ -- next
+ros2 run tf2_ros static_transform_publisher -0.34 -0.25 0.3 0 -3.14 0 sensor_base target
+
+ --next(goal)
+ros2 run tf2_ros static_transform_publisher -0.1 -0.5 -0.42 0 -3.14 0 sensor_base target
+
+--next(go back)
+ros2 run tf2_ros static_transform_publisher -0.1 -0.5 0.4 0 -3.14 0 sensor_base target
+
+--next(go to initial place)
+ros2 run tf2_ros static_transform_publisher -0.34 0 0.5 0 -3.14 0 sensor_base target
+
+
+ ##############   Gripper  ###############
+ -- close gripper place
+ ros2 action send_goal   /robotiq_gripper_controller/gripper_cmd   control_msgs/action/GripperCommand   "{ command: { position: 0.43, max_effort: 10.0 } }"
+
+ -- open gripper place
+ ros2 action send_goal   /robotiq_gripper_controller/gripper_cmd   control_msgs/action/GripperCommand   "{ command: { position: 0, max_effort: 10.0 } }"

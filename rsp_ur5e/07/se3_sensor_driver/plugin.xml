@@ -1,0 +1,7 @@
+<library path="se3_sensor_driver">
+  <class name="se3_sensor_driver/Se3SensorDriver"
+         type="se3_sensor_driver::Se3SensorDriver"
+         base_class_type="hardware_interface::SensorInterface">
+    <description>Custom sensor</description>
+  </class>
+</library>

@@ -1,0 +1,24 @@
+controller_manager:
+    ros__parameters:
+        update_rate: 1
+        robot_broadcaster:
+            type: pose_broadcaster/PoseBroadcaster
+        
+        target_broadcaster:
+            type: pose_broadcaster/PoseBroadcaster
+
+robot_broadcaster:
+    ros__parameters:
+        pose_name: robot_sensor
+        publish_rate: 1.0
+        frame_id: base_link
+        tf:
+            enable: true
+
+target_broadcaster:
+    ros__parameters: 
+        pose_name: target_sensor
+        publish_rate: 1.0
+        frame_id: base_link
+        tf:
+            enable: true
