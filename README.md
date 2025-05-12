@@ -7,7 +7,7 @@ Ruichen Huang
 Swastid Jeevan Kasture
 
 ## Description
-TurtleFetch is an application of turtlebot4 combined with ur5e with gripper. The turtlebot4 will go to somewhere next to the ur5e using Nav2,and ur5e will do "pick and place" task and place and object on the top of turtlebot4. Then the turtlebot4 will go back to the target position.
+TurtleFetch is an application of turtlebot4 combined with ur5e with gripper. The turtlebot4 will go to somewhere next to the ur5e using Nav2,and ur5e will do "pick and place" task and place the object on the top of turtlebot4. Then the turtlebot4 will go back to the target position.
 
 ## Environment
 - Ubuntu 22.04
