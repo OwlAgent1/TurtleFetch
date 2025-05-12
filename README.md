@@ -11,43 +11,43 @@ TurtleFetch is an application of turtlebot4 combined with ur5e with gripper. The
 
 ## Packages
 ### RoomMap: 
-##Purposes:
+- Purposes:
 Roommap of wyman170
-##Functionaility:
+- Functionaility:
 Provide a map for turtlebot4 to move around
-##Limitations:
+- Limitations:
 Not a real time map.
-##contributors:
+- contributors:
 Stefan Hustrulid and Ruichen Huang
 
 ### rsp_ur5e: 
-##Purposes:
+- Purposes:
 To Control the real ur5e and gripper
-##Functionaility:
+- Functionaility:
 Move ur5e end-effortor to the target position and control the status of gripper(open/close)
-##Limitations:
+- Limitations:
 Need to send every target postion of ur5e in a terminal
-##contributors:
+- contributors:
 Ruichen Huang
 
 ### turtlefetch_turtlebot4: 
-##Purposes:
+- Purposes:
 Real Turtlebot Launch file
-##Functionaility:
+- Functionaility:
 Start the localization, Nav2, map and rviz server of turtlebot4 where it will move following the behavior tree.
-##Limitations:
+- Limitations:
 Need to clear up the path for turtlebot4
-##contributors:
+- contributors:
 Stefan Hustrulid
 
 ### tb4_simulation: 
-#Purposes:
+- Purposes:
 Simulation of all tasks
-#Functionaility:
+- Functionaility:
 Spawn turtlebot and ur5e in the same world and implement move, wait, pick up and place actions
-#Limitations:
+- Limitations:
 Positions are hardcoded
-#contributors:
+- contributors:
 Ruichen Huang
 
 
