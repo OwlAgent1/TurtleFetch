@@ -1,7 +1,9 @@
 # TurtleFetch
 ## People
 Stefan Hustrulid
+
 Ruichen Huang
+
 Swastid Jeevan Kasture
 
 ## Description
@@ -52,3 +54,22 @@ Ruichen Huang
 - Stefan: (3/29/2025) Created a world with 4 walls and a table using boxes. Will likely need to be replaced/improved but should work for now for test spawning the Ur5e and Turtlebot. I will look into definine the msgs and actions formats next.
 - Ruichen: (05/08/2025) Simulation part is done with all files uploaded in tb4_simulation. By "ros2 launch tb4_ur5e tb4_ur5e.launch.py", spawning tb4 and ur5e with gripper in the same world. And user can navigate the tb4 to somewhere next to ur5e by Nav2. Ur5e can be controlled by sending stataic transform to pick up the cube.
 - Ruichen: (05/08/2025) Done with real UR5e and gripper with files uploaded in rsp_ur5e.
+
+## Build and Run Instructions
+### Build
+Clone the main branch and build all packages with <pre>colcon build</pre>
+### How to Run
+#### rsp_ur5e
+cd to rsp_ur5e folder and <pre>source install/setup.bash</pre>
+To start the ur5e and gripper, use <pre>ros2 launch ur5e_cartesian_control ur5e.launch.py use_real:=true use_gripper:=true</pre>
+you will see the robot model of ur5e in rviz and the gripper will close and open which indicates the gripper and ur5e is ready for use
+
+To move the ur5e, use <pre>ros2 run tf2_ros static_transform_publisher x y z rx ry rz sensor_base target</pre>
+which will send the target to ur5e. Here x, y, z are cartesian positions of ur5e while rx ry rz is the rpy
+
+To control the gripper, use <pre>ros2 action send_goal   /robotiq_gripper_controller/gripper_cmd   control_msgs/action/GripperCommand   "{ command: { position: s, max_effort: 10 } }"</pre>
+where s is the status of gripper, it can be any value between 0.0 and 0.8( 0.0 indicates open and 0.8 means close )
+
+#### turtlefetch_turtlebot4
+
+#### tb4_simulation
