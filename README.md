@@ -1,9 +1,7 @@
 # TurtleFetch
 ## People
 Stefan Hustrulid
-
 Ruichen Huang
-
 Swastid Jeevan Kasture
 
 ## Description
@@ -49,8 +47,6 @@ Spawn turtlebot and ur5e in the same world and implement move, wait, pick up and
 Positions are hardcoded
 - contributors:
 Ruichen Huang
-
-
 
 ## Progress/Timeline/Notes
 - Stefan: (3/29/2025) Created a world with 4 walls and a table using boxes. Will likely need to be replaced/improved but should work for now for test spawning the Ur5e and Turtlebot. I will look into definine the msgs and actions formats next.
