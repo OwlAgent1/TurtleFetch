@@ -83,6 +83,7 @@ To control the gripper, use <pre>ros2 action send_goal   /robotiq_gripper_contro
 where s is the status of gripper, it can be any value between 0.0 and 0.8( 0.0 indicates open and 0.8 means close )
 
 #### turtlefetch_turtlebot4
+(FILL UP HERE)
 
 #### tb4_simulation
 cd to tb4_simulation folder and <pre>source install/setup.bash</pre>
@@ -90,3 +91,4 @@ To start, use <pre>ros2 launch tb4_ur5e tb4_ur5e.launch.py</pre>
 This will spawn turtlebot and ur5e in the same world. Click 2D Pose Estimation in rviz and set the Nav2 Goal to set the target for turtlebot. When turtlebot arrives at somewhere next to ur5e, send gripper command and position command ( like real ur5e and gripper ) to ur5e to pick up the cube on the ground and place it on turtlebot4
 
 ### Videos
+(ATTACH A LINK FOR VIDEO)
