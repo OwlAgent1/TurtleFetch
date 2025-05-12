@@ -73,11 +73,17 @@ Ruichen Huang
 Clone the main branch and build all packages with <pre>colcon build</pre>
 ### How to Run
 #### rsp_ur5e
+Work on one of the workstation in Wyman170.
+
+Mount the gripper and plug the power supply to the power case of ur5e, red line for 24V, black line for 0V. USB cable is supposed to be plug into the workstation.
+
+Once the gripper is connect, you will see the red light on the end-effortor.
+
 cd to rsp_ur5e folder and <pre>source install/setup.bash</pre>
 Make sure ur5e is connected and is set to remote control
 
 To start the ur5e and gripper, use <pre>ros2 launch ur5e_cartesian_control ur5e.launch.py use_real:=true use_gripper:=true</pre>
-you will see the robot model of ur5e in rviz and the gripper will close and open which indicates the gripper and ur5e is ready for use
+you will see the robot model of ur5e in rviz and the gripper will close and open which indicates the gripper and ur5e is ready for use, the red light will also turned blue
 
 To move the ur5e, use <pre>ros2 run tf2_ros static_transform_publisher x y z rx ry rz sensor_base target</pre>
 which will send the target to ur5e. Here x, y, z are cartesian positions of ur5e while rx ry rz are the rpy
@@ -95,5 +101,3 @@ This will spawn turtlebot and ur5e in the same world. Click 2D Pose Estimation i
 
 ### Videos
 https://youtu.be/ZZpEk5Jpu2s?si=eVL3gxhnmOdHFQuh
-
-https://www.youtube.com/watch?v=ZZpEk5Jpu2s
