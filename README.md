@@ -6,16 +6,45 @@ Ruichen Huang
 
 Swastid Jeevan Kasture
 
+## Description
+TurtleFetch is an application of turtlebot4 combined with ur5e with gripper. The turtlebot4 will go to somewhere next to the ur5e using Nav2,and ur5e will do "pick and place" task and place and object on the top of turtlebot4. Then the turtlebot4 will go back to the target position.
+
 ## Packages
+### RoomMap: 
+#Purposes:
+Roommap of wyman170
+#Functionaility:
+Provide a map for turtlebot4 to move around
+#Limitations:
+Not a real time map.
+#contributors:
+Stefan Hustrulid and Ruichen Huang
+
+### rsp_ur5e: 
+#Purposes:
+To Control the real ur5e and gripper
+#Functionaility:
+Move ur5e end-effortor to the target position and control the status of gripper(open/close)
+#Limitations:
+Need to send every target postion of ur5e in a terminal
+#contributors:
+Ruichen Huang
+
+### turtlefetch_turtlebot4: 
+#Purposes:
+Real Turtlebot Launch file
+#Functionaility:
+Start the localization, Nav2, map and rviz server of turtlebot4 where it will move following the behavior tree.
+#Limitations:
+
+#contributors:
+
 
 ### tb4_simulation: 
+
 Launch gazebo simulation for interfacing with other nodes
-### turtlefetch_msgs: 
-Defines the custom messages and action/services formats used in other packages
-### rsp_ur5e: 
-The server nodes to move the ur5e, open/close gripper, and coordinate pick/place commands
-### turtlefetch_turtlebot4: 
-Real Turtlebot Launch file
+
+
 
 ## Progress/Timeline/Notes
 - Stefan: (3/29/2025) Created a world with 4 walls and a table using boxes. Will likely need to be replaced/improved but should work for now for test spawning the Ur5e and Turtlebot. I will look into definine the msgs and actions formats next.
