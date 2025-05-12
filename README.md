@@ -9,6 +9,16 @@ Swastid Jeevan Kasture
 ## Description
 TurtleFetch is an application of turtlebot4 combined with ur5e with gripper. The turtlebot4 will go to somewhere next to the ur5e using Nav2,and ur5e will do "pick and place" task and place and object on the top of turtlebot4. Then the turtlebot4 will go back to the target position.
 
+## Environment
+- Ubuntu 22.04
+- ROS2 Humble
+- Ignition gazebo Fortress 6.16.0
+
+## Hardware
+- Turtlebot4 in Wyman
+- UR5e in Wyman
+- Robotiq Gripper
+
 ## Packages
 ### RoomMap: 
 - Purposes:
@@ -61,11 +71,13 @@ Clone the main branch and build all packages with <pre>colcon build</pre>
 ### How to Run
 #### rsp_ur5e
 cd to rsp_ur5e folder and <pre>source install/setup.bash</pre>
+Make sure ur5e is connected and is set to remote control
+
 To start the ur5e and gripper, use <pre>ros2 launch ur5e_cartesian_control ur5e.launch.py use_real:=true use_gripper:=true</pre>
 you will see the robot model of ur5e in rviz and the gripper will close and open which indicates the gripper and ur5e is ready for use
 
 To move the ur5e, use <pre>ros2 run tf2_ros static_transform_publisher x y z rx ry rz sensor_base target</pre>
-which will send the target to ur5e. Here x, y, z are cartesian positions of ur5e while rx ry rz is the rpy
+which will send the target to ur5e. Here x, y, z are cartesian positions of ur5e while rx ry rz are the rpy
 
 To control the gripper, use <pre>ros2 action send_goal   /robotiq_gripper_controller/gripper_cmd   control_msgs/action/GripperCommand   "{ command: { position: s, max_effort: 10 } }"</pre>
 where s is the status of gripper, it can be any value between 0.0 and 0.8( 0.0 indicates open and 0.8 means close )
@@ -76,3 +88,5 @@ where s is the status of gripper, it can be any value between 0.0 and 0.8( 0.0 i
 cd to tb4_simulation folder and <pre>source install/setup.bash</pre>
 To start, use <pre>ros2 launch tb4_ur5e tb4_ur5e.launch.py</pre>
 This will spawn turtlebot and ur5e in the same world. Click 2D Pose Estimation in rviz and set the Nav2 Goal to set the target for turtlebot. When turtlebot arrives at somewhere next to ur5e, send gripper command and position command ( like real ur5e and gripper ) to ur5e to pick up the cube on the ground and place it on turtlebot4
+
+### Videos
