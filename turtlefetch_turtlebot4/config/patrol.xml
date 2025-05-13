@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root main_tree_to_execute="PatrolTree" BTCPP_format="4">
+  <BehaviorTree ID="PatrolTree">
+        <Sequence>
+        
+          <ComputePathToPose
+            goal="0;map;7;-5.5;0;0;0;0;1"
+            path="{path1}"
+            planner_id="GridBased"/>
+          <FollowPath
+            path="{path1}"
+            controller_id="FollowPath"/>
+            
+          
+          <ComputePathToPose
+            goal="0;map;9.1524;-6.704;0;0;0;0;1"
+            path="{path2}"
+            planner_id="GridBased"/>
+          <FollowPath
+            path="{path2}"
+            controller_id="FollowPath"/>
+		
+					<Wait wait_duration="120"/>
+					
+					
+					<ComputePathToPose
+            goal="0;map;7;-5.5;0;0;0;0;1"
+            path="{path3}"
+            planner_id="GridBased"/>
+          <FollowPath
+            path="{path3}"
+            controller_id="FollowPath"/>
+					
+          <ComputePathToPose
+            goal="0;map;5.9;-5.7;0;0;0;0;1"
+            path="{path4}"
+            planner_id="GridBased"/>
+          <FollowPath
+            path="{path4}"
+            controller_id="FollowPath"/>
+        </Sequence>
+  </BehaviorTree>
+
+
+  <!-- Description of Node Models (used by Groot) -->
+  <TreeNodesModel>
+    <Action ID="ComputePathToPose">
+      <input_port name="goal">Destination to plan to</input_port>
+      <input_port name="start">Start pose of the path if overriding current robot pose</input_port>
+      <input_port name="planner_id">Mapped name to the planner plugin type to use</input_port>
+      <input_port name="server_name">Server name</input_port>
+      <input_port name="server_timeout">Server timeout</input_port>
+      <output_port name="path">Path created by ComputePathToPose node</output_port>
+    </Action>
+    
+    <Action ID="FollowPath">
+      <input_port name="controller_id"
+                  default="FollowPath"/>
+      <input_port name="path">Path to follow</input_port>
+      <input_port name="goal_checker_id">Goal checker</input_port>
+      <input_port name="server_name">Server name</input_port>
+      <input_port name="server_timeout">Server timeout</input_port>
+    </Action><input_port name="duration">Time to wait (milliseconds)</input_port>
+
+    <Control ID="PipelineSequence"/>
+    
+    <Decorator ID="Wait">
+    	<input_port name="wait_duration">Time to wait (seconds)</input_port>
+  	</Decorator>
+  </TreeNodesModel>
+
+</root>

@@ -21,12 +21,14 @@ def generate_launch_description():
 	#Map File Path
 	path2map = PathJoinSubstitution([pkg_turtlefetch_turtlebot4, 'maps', 'map.yaml'])
 	
+	#Behavior Tree File Path
+	path2bt = PathJoinSubstitution([pkg_turtlefetch_turtlebot4, 'config', 'nav2.yaml'])
+	
 	#Localization
 	turtlebot4_localization = IncludeLaunchDescription(
 		PythonLaunchDescriptionSource([turtlebot4_localization_launch]),
 		launch_arguments=[
 			('namespace', namespace),
-			#('use_sim_time','false'),
 			('map',path2map)
 		],
 	)
@@ -34,15 +36,16 @@ def generate_launch_description():
 	#turtlebot4_localization = ExecuteProcess(cmd=['gnome-terminal','--','bash','-c',f'ros2 launch turtlebot4_navigation localization.launch.py namespace:={namespace} use_sim_time:=false map:={path2map}; exec bash'])
 	
 	#Navigation
-	'''
+
 	turtlebot4_navigation = IncludeLaunchDescription(
 		PythonLaunchDescriptionSource([turtlebot4_navigation_launch]),
 		launch_arguments=[
 			('namespace', namespace),
+			('params_file',path2bt)
 		],
 	)
-	'''
-	turtlebot4_navigation = ExecuteProcess(cmd=['gnome-terminal','--','bash','-c',f'ros2 launch turtlebot4_navigation nav2.launch.py namespace:={namespace}; exec bash'])
+
+	#turtlebot4_navigation = ExecuteProcess(cmd=['gnome-terminal','--','bash','-c',f'ros2 launch turtlebot4_navigation nav2.launch.py namespace:={namespace} params_file:={path2bt}; exec bash'])
 	
 	#Rviz
 	'''
@@ -55,9 +58,9 @@ def generate_launch_description():
 	'''
 	view_robot = ExecuteProcess(cmd=['gnome-terminal','--','bash','-c',f'ros2 launch turtlebot4_viz view_robot.launch.py namespace:={namespace}; exec bash'])
 	
-	delayed_action1 = TimerAction(period=20.0, actions=[turtlebot4_navigation])
+	delayed_action1 = TimerAction(period=15.0, actions=[turtlebot4_navigation])
 	
-	delayed_action2 = TimerAction(period=40.0, actions=[view_robot])
+	delayed_action2 = TimerAction(period=35.0, actions=[view_robot])
 	
 	#Launch Description
 	ld = LaunchDescription()
