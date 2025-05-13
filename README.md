@@ -92,7 +92,32 @@ To control the gripper, use <pre>ros2 action send_goal   /robotiq_gripper_contro
 where s is the status of gripper, it can be any value between 0.0 and 0.8( 0.0 indicates open and 0.8 means close )
 
 #### turtlefetch_turtlebot4
-(FILL UP HERE)
+Turtlebot Must be configured with the namespace /TurtleFetch. for best results, set up the Create3 with the Discovery Server.
+
+To connect PC to the turtlebot, connect to the same wifi (or Access Point),and configure using <pre>wget -qO - https://raw.githubusercontent.com/turtlebot/turtlebot4_setup/humble/turtlebot4_discovery/configure_discovery.sh | bash <(cat) </dev/tty</pre>
+The Discover IP Address should be the same as on the turtlebot.
+After running, call: <pre>source ~/.bashrc</pre> and <pre>ros2 daemon stop; ros2 daemon start</pre>
+The turtlebot topics should have the namespace /TurtleFetch
+
+To undock/dock the turtlebot call:
+<pre>ros2 action send_goal /TurtleFetch/dock irobot_create_msgs/action/Dock "{}"</pre>
+<pre>ros2 action send_goal /TurtleFetch/undock irobot_create_msgs/action/Undock "{}"</pre>
+
+To teleop the turtlebot call:
+<pre>ros2 run teleop_twist_keyboard teleop_twist_keyboard -r /cmd_vel:=/TurtleFetch/cmd_vel</pre>
+
+To launch turtlefetch_turtlebot cd to turtlefetch_turtlebot directory and <pre>source install/setup.bash</pre>
+<pre>ros2 launch turtlefetch_turtlebot turtlefetch_turtlebot.launch.py</pre>
+
+It may take multiple tries for the nav2 to launch correctly.
+
+If manually launching:
+
+Localization: <pre>ros2 launch turtlebot4_navigation localization.launch.py map:=[PATH TO]/map.yaml namespace:=/TurtleFetch</pre>
+
+Nav2: <pre>ros2 launch turtlebot4_navigation nav2.launch.py params_file:=[PATH TO]/nav2.yaml namespace:=/TurtleFetch</pre>
+
+RVIZ: <pre> ros2 launch turtlebot4_viz view_robot.launch.py namespace:=/TurtleFetch</pre>
 
 #### tb4_simulation
 cd to tb4_simulation folder and <pre>source install/setup.bash</pre>
